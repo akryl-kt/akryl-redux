@@ -21,7 +21,7 @@ fun Store<*, *>.provider(children: List<ReactElement<*>>) =
     )
 
 @Suppress("unused")
-fun <S, R> ComponentScope.useSelector(selector: (S) -> R, equalityFn: ((R, R) -> Boolean)? = undefined): R =
+fun <S, R> ComponentScope.useSelector(equalityFn: ((R, R) -> Boolean)? = undefined, selector: (S) -> R): R =
     ReactRedux.useSelector(selector, equalityFn)
 
 @Suppress("unused")
