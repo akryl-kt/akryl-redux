@@ -45,16 +45,16 @@ interface MsgAction<out Msg> : Action {
 fun <State, Msg, Cmd> createStore(
     init: Pair<State, Cmd?>,
     update: (State, Msg) -> Pair<State, Cmd?>,
-    execute: suspend (Cmd) -> List<Msg>,
+    execute: suspend (Cmd, Dispatch<Msg>) -> Unit,
     enhancer: StoreEnhancer<State, MsgAction<Msg>>? = undefined
 ): Store<State, MsgAction<Msg>> {
     val (initState, initCmd) = init
     var dispatch: Dispatch<Msg>? = null
 
     fun process(cmd: Cmd) {
-        GlobalScope.launch {
-            execute(cmd).forEach { msg ->
-                dispatch?.invoke(msg)
+        dispatch?.let { d ->
+            GlobalScope.launch {
+                execute(cmd, d)
             }
         }
     }

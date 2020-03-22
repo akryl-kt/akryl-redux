@@ -61,10 +61,10 @@ class ReduxTest {
                     Pair(state, Cmd)
             }
         },
-        execute = {
+        execute = { _, dispatch ->
             sideEffect += 1
             console.log("sideEffect", sideEffect)
-            listOf(Msg.Increment)
+            dispatch(Msg.Increment)
         }
     )
 
