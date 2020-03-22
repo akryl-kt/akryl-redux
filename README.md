@@ -48,7 +48,7 @@ val store = createStore<Int, Msg, Nothing>(
             is Msg.Decrement -> Pair(state - 1, null)
         }
     },
-    execute = { emptyList() } 
+    execute = { _, _ -> Unit } 
 )
 
 fun counter() = component {
