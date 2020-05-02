@@ -55,10 +55,10 @@ fun counter() = component {
     val count = useSelector<Int>()
     val dispatch = useDispatch<Msg>()
 
-    Div(
-        Button(text = "-", onClick = { dispatch(Msg.Decrement) }),
-        Text(count.toString()),
-        Button(text = "+", onClick = { dispatch(Msg.Increment) })
+    div(
+        button(text = "-", onClick = { dispatch(Msg.Decrement) }),
+        text(count.toString()),
+        button(text = "+", onClick = { dispatch(Msg.Increment) })
     )
 }
 

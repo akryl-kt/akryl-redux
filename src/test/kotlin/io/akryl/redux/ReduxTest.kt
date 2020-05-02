@@ -1,7 +1,7 @@
 package io.akryl.redux
 
 import io.akryl.component
-import io.akryl.dom.html.Text
+import io.akryl.dom.html.text
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.await
 import kotlinx.coroutines.promise
@@ -41,7 +41,7 @@ private fun reduxComponent(inc: EventEmitter<Unit>, dec: EventEmitter<Unit>, eff
     inc { dispatch(Msg.Increment) }
     dec { dispatch(Msg.Decrement) }
     effect { dispatch(Msg.Effect) }
-    Text(state.count.toString())
+    text(state.count.toString())
 }
 
 class ReduxTest {
